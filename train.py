@@ -4,7 +4,7 @@
 #16 is the maximum value for wind capacity we use. Change to the customized max value for normalized data
 #import ipdb
 import os
-import pandas as pd
+# import pandas as pd
 import numpy as np
 from model import *
 from util import *
