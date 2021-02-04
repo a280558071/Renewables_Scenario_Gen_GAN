@@ -4,7 +4,7 @@
 #16 is the maximum value for wind capacity we use. Change to the customized max value for normalized data
 #import ipdb
 import os
-# import pandas as pd
+import pandas as pd
 import numpy as np
 from model import *
 from util import *
@@ -152,8 +152,9 @@ for epoch in range(n_epochs):
                 })
             generated_samples=generated_samples.reshape([-1,576])
             generated_samples = generated_samples * 16 #16 is the maximum value for wind capacity we use. Change to your max value here
-            csvfile=file('%s.csv' %iterations, 'wb')
+            csvfile=open('%s.csv' %iterations, 'w')
             writer=csv.writer(csvfile)
+            # generated_samples_bytes=generated_samples.enconde(encoding='UTF-8')
             writer.writerows(generated_samples)
 
         iterations += 1
@@ -168,10 +169,10 @@ generated_samples = sess.run(
     })
 generated_samples=generated_samples.reshape([-1,576])
 generated_samples = generated_samples * 16 #16 is the maximum value for wind capacity we use. Change to your max value here
-csvfile=file('sample1.csv', 'wb')
+csvfile=open('sample1.csv', 'wb')
 writer=csv.writer(csvfile)
 writer.writerows(generated_samples)
-csvfile=file('label1.csv', 'wb')
+csvfile=open('label1.csv', 'wb')
 writer=csv.writer(csvfile)
 writer.writerows(Y_np_sample)
 
